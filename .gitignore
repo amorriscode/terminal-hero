@@ -7,3 +7,4 @@
 /tmp
 node_modules
 songs
+.DS_Store
