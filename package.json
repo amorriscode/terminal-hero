@@ -3,6 +3,9 @@
   "description": "Becoming a rockstar has never been easier 🤘",
   "version": "0.0.1",
   "author": "Anthony Morris @amorriscode",
+  "contributors": [
+    "Bryan Hyshka @hyshka"
+  ],
   "bin": {
     "terminal-hero": "./bin/run"
   },
@@ -11,6 +14,10 @@
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
+    "fluent-ffmpeg": "^2.1.2",
+    "midi-player-js": "^2.0.5",
+    "pcm-volume": "^1.0.0",
+    "speaker": "^0.5.1",
     "tslib": "^1"
   },
   "devDependencies": {

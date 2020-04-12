@@ -1,28 +1,23 @@
-import {Command, flags} from '@oclif/command'
+import {Command} from '@oclif/command'
+import Song from './song'
+import Transport from './transport'
 
 class TerminalHero extends Command {
-  static description = 'describe the command here'
+  static description = 'Bringing musical skills and fast fingers to a terminal near you 🤘'
 
-  static flags = {
-    // add --version flag to show CLI version
-    version: flags.version({char: 'v'}),
-    help: flags.help({char: 'h'}),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: flags.boolean({char: 'f'}),
-  }
-
-  static args = [{name: 'file'}]
+  static args = [{
+    name: 'songPath',
+    required: true,
+    description: 'path to song foler',
+  }]
 
   async run() {
-    const {args, flags} = this.parse(TerminalHero)
+    const {args} = this.parse(TerminalHero)
 
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/index.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const transport = new Transport(args.songPath)
+    const song = new Song(args.songPath)
+
+    transport.play()
   }
 }
 
