@@ -8,7 +8,7 @@ class TerminalHero extends Command {
   static args = [{
     name: 'songPath',
     required: true,
-    description: 'path to song foler',
+    description: 'path to song folder',
   }]
 
   async run() {
