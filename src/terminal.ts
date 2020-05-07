@@ -21,7 +21,11 @@ const buttonState: any = {
 function terminate() {
   term.hideCursor(false)
   term.grabInput(false)
-  setTimeout(() => process.exit(), 100)
+  setTimeout(() => {
+    term.moveTo(1, term.height, '\n\n')
+    // TODO modify this to use this.exit() in oclif context
+    process.exit(1)
+  }, 100)
 }
 
 interface KeyEvent {

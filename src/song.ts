@@ -7,7 +7,7 @@ function createSpeaker() {
   // @ts-ignore
   return new Speaker({
     channels: 2,
-    bitDepth: 16,    
+    bitDepth: 16,
     sampleRate: 44100,
   })
 }
@@ -16,6 +16,7 @@ function createStream(file: string, output: any) {
   return ffmpeg(file)
   .format('wav')
   .noVideo()
+  .outputOptions(['-bitexact'])
   .stream(output)
 }
 

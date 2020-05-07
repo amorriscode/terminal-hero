@@ -1,6 +1,7 @@
 import {Command} from '@oclif/command'
 import Song from './song'
 import Transport from './transport'
+import render from './terminal'
 
 class TerminalHero extends Command {
   static description = 'Bringing musical skills and fast fingers to a terminal near you 🤘'
@@ -18,6 +19,8 @@ class TerminalHero extends Command {
     const song = new Song(args.songPath)
 
     transport.play()
+
+    render()
   }
 }
 
