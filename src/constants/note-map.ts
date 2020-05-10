@@ -1,3 +1,7 @@
+// We map various MIDI notes to each of our buttons
+// Each difficulty has its own octave mapped to it
+// The numbers (96, 97, etc.) represent MIDI note values
+
 export const EXPERT = {
   0: 96,    // C8
   1: 97,    // C#8
