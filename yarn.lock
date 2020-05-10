@@ -140,6 +140,14 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
+"@tonejs/midi@^2.0.23":
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/@tonejs/midi/-/midi-2.0.23.tgz#b0d848c0575bbf9d51b03bcf7de0f694825515da"
+  integrity sha512-9xs8Ckg8atbogiflezGeT7X1hGRLwtSTtHoHDE4Jtmzx/cYRPsKQgigZqnAKJRh6AomOcMrzUGK0cT/VZi39LA==
+  dependencies:
+    array-flatten "^2.1.2"
+    midi-file "^1.1.2"
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -307,6 +315,11 @@ array-find-index@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
   integrity sha1-3wEKoSh+Fku9pvlyOwqWoexBh6E=
+
+array-flatten@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
+  integrity sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==
 
 array-union@^2.1.0:
   version "2.1.0"
@@ -1714,10 +1727,10 @@ micromatch@^4.0.2:
     braces "^3.0.1"
     picomatch "^2.0.5"
 
-midi-player-js@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/midi-player-js/-/midi-player-js-2.0.5.tgz#9e30738ffefd81febeb14b0437b0aec4b0231a1e"
-  integrity sha512-1HrjWzlb6h9Jf0y62WXlBwZE4sq52h7DRNk5yRr0yhUShCnvyavCAogEqzbxuFGweEPaXrBz1G4uEIs/O71Xkg==
+midi-file@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/midi-file/-/midi-file-1.1.2.tgz#57fafe2dcb605ef29f06652ac45e7a475873dc77"
+  integrity sha512-VQNzirfADDFXTymgPJv2VfLylCq14spRNFhpA6u7dLqPMbw1BqGf5u9B0k7z++8X1RMs57pyn+G4kzhyIatlyw==
 
 mime-db@1.43.0:
   version "1.43.0"
