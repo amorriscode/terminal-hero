@@ -1,6 +1,5 @@
 import {Command} from '@oclif/command'
 import Song from './song'
-import Transport from './transport'
 import render from './terminal'
 
 class TerminalHero extends Command {
@@ -15,10 +14,9 @@ class TerminalHero extends Command {
   async run() {
     const {args} = this.parse(TerminalHero)
 
-    const transport = new Transport(args.songPath)
     const song = new Song(args.songPath)
 
-    transport.play()
+    this.log(`Playing ${song.title}...`)
 
     render()
   }

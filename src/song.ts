@@ -1,6 +1,9 @@
 import Speaker from 'speaker'
 import ffmpeg from 'fluent-ffmpeg'
 import Volume from 'pcm-volume'
+import {Midi} from '@tonejs/midi'
+import {Note} from '@tonejs/midi/dist/Note'
+import fs from 'fs'
 
 function createSpeaker() {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -46,13 +49,43 @@ class Song {
 
   song: any;
 
+  midi: Midi;
+
+  title: string;
+
+  notes: Note[];
+
+  songPath: string;
+
   constructor(songPath: string) {
-    this.guitar = new TrackStream(`${songPath}/guitar.ogg`)
+    this.songPath = songPath
+    this.guitar = new TrackStream(`${this.songPath}/guitar.ogg`)
     // Set guitar volume to 0 until player hits a button
     this.guitar.setVolume(0)
 
-    this.rhythm = new TrackStream(`${songPath}/rhythm.ogg`)
-    this.song = new TrackStream(`${songPath}/song.ogg`)
+    this.rhythm = new TrackStream(`${this.songPath}/rhythm.ogg`)
+    this.song = new TrackStream(`${this.songPath}/song.ogg`)
+
+    this.midi = this.parseMidi()
+
+    this.title = this.midi.name
+
+    this.notes = this.parseNotes()
+  }
+
+  parseMidi() {
+    const midiData = fs.readFileSync(`${this.songPath}/notes.mid`)
+    return new Midi(midiData)
+  }
+
+  parseNotes() {
+    for (let i = 0; i < this.midi.tracks.length; i++) {
+      if (this.midi.tracks[i].name === 'PART GUITAR') {
+        return this.midi.tracks[i].notes
+      }
+    }
+
+    return []
   }
 }
 
