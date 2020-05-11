@@ -49,16 +49,16 @@ class Song {
 
   song: any;
 
+  midi: Midi;
+
+  title: string;
+
   notes: Note[];
 
   songPath: string;
 
   constructor(songPath: string) {
     this.songPath = songPath
-    this.notes = []
-  }
-
-  async init() {
     this.guitar = new TrackStream(`${this.songPath}/guitar.ogg`)
     // Set guitar volume to 0 until player hits a button
     this.guitar.setVolume(0)
@@ -66,18 +66,24 @@ class Song {
     this.rhythm = new TrackStream(`${this.songPath}/rhythm.ogg`)
     this.song = new TrackStream(`${this.songPath}/song.ogg`)
 
-    this.notes = await this.parseMidi()
+    this.midi = this.parseMidi()
+
+    this.title = this.midi.name
+
+    this.notes = this.parseNotes()
   }
 
-  async parseMidi() {
+  parseMidi() {
     const midiData = fs.readFileSync(`${this.songPath}/notes.mid`)
-    const midi = new Midi(midiData)
+    return new Midi(midiData)
+  }
 
-    midi.tracks.forEach(track => {
-      if (track.name === 'PART GUITAR') {
-        this.notes = track.notes
+  parseNotes() {
+    for (let i = 0; i < this.midi.tracks.length; i++) {
+      if (this.midi.tracks[i].name === 'PART GUITAR') {
+        return this.midi.tracks[i].notes
       }
-    })
+    }
 
     return []
   }

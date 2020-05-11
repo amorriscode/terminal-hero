@@ -15,7 +15,8 @@ class TerminalHero extends Command {
     const {args} = this.parse(TerminalHero)
 
     const song = new Song(args.songPath)
-    song.init()
+
+    this.log(`Playing ${song.title}...`)
 
     render()
   }
