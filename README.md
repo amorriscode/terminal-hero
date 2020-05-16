@@ -4,6 +4,7 @@
 Bringing musical skills and fast fingers to a terminal near you 🤘
 
 * [Getting Started](#getting-started)
+* [Usage](#usage)
 * [Songs](#songs)
 
 ## Getting Started
@@ -24,7 +25,21 @@ pip install -r requirements.txt
 3. Rock out!
 
 ```bash
-python main.py
+python main.py [songPath]
+```
+
+## Usage
+
+```bash
+usage: main.py [-h] songPath
+
+Bringing musical skills and fast fingers to a terminal near you 🤘
+
+positional arguments:
+  songPath    path to your Frets on Fire song
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 ## Songs
