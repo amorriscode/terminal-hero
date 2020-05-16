@@ -1,3 +1,3 @@
 PyOpenAl==0.7.11a1
 PyOgg==0.6.13a1
-argparse==1.4.0
+argparse==1.4.*

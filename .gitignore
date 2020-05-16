@@ -1,5 +1,6 @@
 /tmp
 songs
 .DS_Store
-th-env
+venv
 __pycache__
+*.pyc

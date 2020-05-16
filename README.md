@@ -11,22 +11,16 @@ Bringing musical skills and fast fingers to a terminal near you 🤘
 
 ## Getting Started
 
-1. Create and activate a `virtualenv` with python:
+1. Initialize terminal-hero:
 
 ```bash
-python3 -m virtualenv th-env
-source ./th-env/bin/activate
+make init
 ```
 
-2. Install dependencies
+2. Rock out!
 
 ```bash
-pip install -r requirements.txt
-```
-
-3. Rock out!
-
-```bash
+. ./venv/bin/activate
 python main.py [songPath]
 ```
 
