@@ -1,6 +1,8 @@
 # Terminal Hero
 =============
 
+[![GitHub license](https://img.shields.io/github/license/amorriscode/terminal-hero)](https://github.com/amorriscode/terminal-hero/blob/master/LICENSE)
+
 Bringing musical skills and fast fingers to a terminal near you 🤘
 
 * [Getting Started](#getting-started)
