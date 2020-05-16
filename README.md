@@ -1,32 +1,43 @@
-terminal-hero
+# Terminal Hero
 =============
+
+[![GitHub license](https://img.shields.io/github/license/amorriscode/terminal-hero)](https://github.com/amorriscode/terminal-hero/blob/master/LICENSE)
 
 Bringing musical skills and fast fingers to a terminal near you 🤘
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/terminal-hero.svg)](https://npmjs.org/package/terminal-hero)
-[![Downloads/week](https://img.shields.io/npm/dw/terminal-hero.svg)](https://npmjs.org/package/terminal-hero)
-[![License](https://img.shields.io/npm/l/terminal-hero.svg)](https://github.com/amorriscode/terminal-hero/blob/master/package.json)
-
-<!-- toc -->
+* [Getting Started](#getting-started)
 * [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g terminal-hero
-$ terminal-hero COMMAND
-running command...
-$ terminal-hero (-v|--version|version)
-terminal-hero/0.0.1 darwin-x64 node-v12.16.1
-$ terminal-hero --help [COMMAND]
-USAGE
-  $ terminal-hero COMMAND
-...
-```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
+* [Songs](#songs)
 
-<!-- commandsstop -->
+## Getting Started
+
+1. Initialize terminal-hero:
+
+```bash
+make init
+```
+
+2. Rock out!
+
+```bash
+. ./venv/bin/activate
+python main.py [songPath]
+```
+
+## Usage
+
+```bash
+usage: main.py [-h] songPath
+
+Bringing musical skills and fast fingers to a terminal near you 🤘
+
+positional arguments:
+  songPath    path to your Frets on Fire song
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+## Songs
+
+Terminal Hero uses [songs created for Frets on Fire](http://fretsonfire.wikidot.com/song-creation). We do not provide any songs. You can find some on the [Frets of Fire forums](http://fretsonfire.wikidot.com/custom-songs) and they should Just Work™.
