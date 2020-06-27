@@ -29,6 +29,16 @@ Bringing musical skills and fast fingers to a terminal near you 🤘
 
 ## Getting Started
 
+### Requirements
+
+1. Install `libogg` for audio playback:
+
+```bash
+brew install libogg
+```
+
+## Setup
+
 1. Initialize terminal-hero:
 
 ```bash
