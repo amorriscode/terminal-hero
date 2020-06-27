@@ -24,30 +24,38 @@
 Bringing musical skills and fast fingers to a terminal near you 🤘
 
 - [Getting Started](#getting-started)
+  - [Mac / Linux](#mac--linux)
+  - [Windows](#windows)
 - [Usage](#usage)
 - [Songs](#songs)
 
 ## Getting Started
+
+### Mac / Linux
 - Install Python3.6+
-- Mac/Linux
-  - Initialize terminal-hero:
-    ```bash
-    $ make init
-    ```
-  - Rock out!
-    ```bash
-    $ . ./venv/bin/activate
-    $ python main.py [songPath]
-    ```
-- Windows
-  - Initialize terminal-hero:
-    ```cmd
-    PS> .\Makefile.bat init
-    ```
-  - Rock out!
-    ```cmd
-    (venv) PS> python main.py [songPath]
-    ```
+  - [Mac](https://docs.python-guide.org/starting/install3/osx/)
+  - [Linux](https://docs.python-guide.org/starting/install3/linux/)
+- Initialize terminal-hero:
+  ```bash
+  $ make init
+  ```
+- Rock out!
+  ```bash
+  $ source ./venv/bin/activate
+  $ python main.py [songPath]
+  ```
+### Windows
+- Install Python3.6+
+  - [Direct](https://www.python.org/downloads/windows/)
+  - [Microsoft Store](https://www.serverlab.ca/tutorials/windows/installing-python-3-7-on-windows-10/)
+- Initialize terminal-hero:
+  ```cmd
+  PS> .\Makefile.bat init
+  ```
+- Rock out!
+  ```cmd
+  (venv) PS> python main.py [songPath]
+  ```
 
 ## Usage
 
