@@ -23,24 +23,31 @@
 
 Bringing musical skills and fast fingers to a terminal near you 🤘
 
-* [Getting Started](#getting-started)
-* [Usage](#usage)
-* [Songs](#songs)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Songs](#songs)
 
 ## Getting Started
-
-1. Initialize terminal-hero:
-
-```bash
-make init
-```
-
-2. Rock out!
-
-```bash
-. ./venv/bin/activate
-python main.py [songPath]
-```
+- Install Python3.6+
+- Mac/Linux
+  - Initialize terminal-hero:
+    ```bash
+    $ make init
+    ```
+  - Rock out!
+    ```bash
+    $ . ./venv/bin/activate
+    $ python main.py [songPath]
+    ```
+- Windows
+  - Initialize terminal-hero:
+    ```cmd
+    PS> .\Makefile.bat init
+    ```
+  - Rock out!
+    ```cmd
+    (venv) PS> python main.py [songPath]
+    ```
 
 ## Usage
 
