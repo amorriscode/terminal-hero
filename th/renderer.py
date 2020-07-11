@@ -1,60 +1,76 @@
 from asciimatics.effects import Print
-from asciimatics.renderers import FigletText, StaticRenderer, Box
+from asciimatics.renderers import StaticRenderer, DynamicRenderer
 from asciimatics.scene import Scene
 from asciimatics.screen import Screen
 
 
-class Fretboard(StaticRenderer):
-    """
-    Renders a simple box using ASCII characters.  This does not render in
-    extended box drawing characters as that requires non-ASCII characters in
-    Windows and direct access to curses in Linux.
-    """
+class FretboardDynamic(DynamicRenderer):
+    def __init__(self, height, width):
+        super(FretboardDynamic, self).__init__(height, width)
+        self._t = 0
+        self._fret_line = "|----" * 6 + "|\n"
+        self._line = "|    " * 6 + "|\n"
+        self._lines = []
 
-    def __init__(self, width, height, uni=False):
-        """
-        :param width: The desired width of the box.
-        :param height: The desired height of the box.
-        :param uni: Whether to use unicode box characters or not.
-        """
-        super(Fretboard, self).__init__()
-        if uni:
-            box = ""
-            for _ in range(height - 2):
-                box += u"│" + u" " * (width - 2) + u"│\n"
+    def _render_now(self):
+        if self._t % 4:
+            self._lines.insert(0, self._line)
         else:
-            box = ""
-            for _ in range(height - 2):
-                box += "|" + " " * (width - 2) + "|\n"
-        self._images = [box]
+            self._lines.insert(0, self._fret_line)
+
+        for index, line in enumerate(self._lines):
+            self._write(line, 0, index)
+
+        self._t += 1
+        return self._plain_image, self._colour_map
 
 
 class Button(StaticRenderer):
-    """
-    Renders a simple box using ASCII characters.  This does not render in
-    extended box drawing characters as that requires non-ASCII characters in
-    Windows and direct access to curses in Linux.
-    """
-
-    def __init__(self, width, height, uni=False):
-        """
-        :param width: The desired width of the box.
-        :param height: The desired height of the box.
-        """
+    def __init__(self):
         super(Button, self).__init__()
-        box = u"." + u"-" * (width - 2) + u".\n"
-        for _ in range(height - 2):
-            box += u"|" + u"#" * (width - 2) + u"|\n"
-        box += u"." + u"-" * (width - 2) + u".\n"
+        box = "( )"
+        self._images = [box]
+
+
+class ScoreBoard(StaticRenderer):
+    def __init__(self):
+        super(ScoreBoard, self).__init__()
+        box = """
+ ######## 
++--------+
+| 232451 |
+|        |
+|   x4   |
++--------+"""
+        self._images = [box]
+
+
+class StarPower(StaticRenderer):
+    def __init__(self):
+        super(StarPower, self).__init__()
+        box = """
+ ******
++------+
+| #### |
+| #### |
+| #### |
+| ROCK |
++------+"""
         self._images = [box]
 
 
 def demo(screen):
     effects = [
-        Print(screen, Fretboard(int(screen.width / 2), screen.height, uni=True), 0),
-        Print(screen, Button(9, 3), int(screen.height - 5), x=int(screen.width / 2)),
+        Print(screen, FretboardDynamic(40, 31), 0, x=13, transparent=False),
+        Print(screen, Button(), 36, x=17, transparent=False),
+        Print(screen, Button(), 36, x=22, transparent=False),
+        Print(screen, Button(), 36, x=27, transparent=False),
+        Print(screen, Button(), 36, x=32, transparent=False),
+        Print(screen, Button(), 36, x=37, transparent=False),
+        Print(screen, ScoreBoard(), 33, x=0),
+        Print(screen, StarPower(), 32, x=46),
     ]
-    screen.play([Scene(effects, 500)])
+    screen.play([Scene(effects, -1)])
 
 
 Screen.wrapper(demo)
