@@ -1,82 +1,11 @@
+from asciimatics.scene import Scene
 from asciimatics.effects import Print
 from asciimatics.event import KeyboardEvent
-from asciimatics.exceptions import ResizeScreenError, StopApplication
-from asciimatics.renderers import StaticRenderer, DynamicRenderer
-from asciimatics.scene import Scene
-from asciimatics.screen import Screen
+from asciimatics.exceptions import StopApplication
 from asciimatics.widgets import PopUpDialog
 
-HELP = """
-Use the following keys:
-
-- A, S, D, F, and G to press fret buttons.
-- Space bar to pick string.
-- X to quit
-"""
-
-
-class GameState(object):
-    """
-    Persistent state for this application.
-    """
-
-    def __init__(self):
-        self.button_1 = False
-
-
-class FretboardDynamic(DynamicRenderer):
-    def __init__(self, height, width):
-        super(FretboardDynamic, self).__init__(height, width)
-        self._t = 0
-        self._fret_line = "|----" * 6 + "|\n"
-        self._line = "|    " * 6 + "|\n"
-        self._lines = []
-
-    def _render_now(self):
-        if self._t % 4:
-            self._lines.insert(0, self._line)
-        else:
-            self._lines.insert(0, self._fret_line)
-
-        for index, line in enumerate(self._lines):
-            self._write(line, 0, index)
-
-        self._t += 1
-        return self._plain_image, self._colour_map
-
-
-class Button(StaticRenderer):
-    def __init__(self):
-        super(Button, self).__init__()
-        box = "( )"
-        self._images = [box]
-
-
-class ScoreBoard(StaticRenderer):
-    def __init__(self):
-        super(ScoreBoard, self).__init__()
-        box = """
- ######## 
-+--------+
-| 232451 |
-|        |
-|   x4   |
-+--------+"""
-        self._images = [box]
-
-
-class StarPower(StaticRenderer):
-    def __init__(self):
-        super(StarPower, self).__init__()
-        box = """
- ******
-+------+
-| #### |
-| #### |
-| #### |
-| ROCK |
-+------+"""
-        self._images = [box]
+from .constants import HELP
+from .renderers import FretboardDynamic, Button, ScoreBoard, StarPower
 
 
 class GameController(Scene):
@@ -114,14 +43,19 @@ class GameController(Scene):
                 raise StopApplication("User exit")
             elif c in (ord("a"), ord("A")):
                 # TODO activate button one
+                pass
             elif c in (ord("s"), ord("S")):
                 # TODO activate button two
+                pass
             elif c in (ord("d"), ord("D")):
                 # TODO activate button three
+                pass
             elif c in (ord("f"), ord("F")):
                 # TODO activate button four
+                pass
             elif c in (ord("g"), ord("G")):
                 # TODO activate button five
+                pass
             elif c in (ord("h"), ord("H")):
                 self.add_effect(PopUpDialog(self._screen, HELP, ["OK"]))
             else:
@@ -130,17 +64,3 @@ class GameController(Scene):
         else:
             # Ignore other types of events.
             return event
-
-
-def demo(screen, game_state):
-    screen.play([GameController(screen, game_state)], stop_on_resize=True)
-
-
-if __name__ == "__main__":
-    game_state = GameState()
-    while True:
-        try:
-            Screen.wrapper(demo, catch_interrupt=False, arguments=[game_state])
-            sys.exit(0)
-        except ResizeScreenError:
-            pass
