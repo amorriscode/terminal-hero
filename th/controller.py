@@ -1,4 +1,5 @@
 from asciimatics.scene import Scene
+from asciimatics.screen import Screen
 from asciimatics.effects import Print
 from asciimatics.event import KeyboardEvent
 from asciimatics.exceptions import StopApplication
@@ -6,6 +7,7 @@ from asciimatics.widgets import PopUpDialog
 
 from .constants import HELP
 from .renderers import FretboardDynamic, Button, ScoreBoard, StarPower
+from .effects import ButtonEffect
 
 
 class GameController(Scene):
@@ -21,11 +23,46 @@ class GameController(Scene):
         self._state = game_state
         effects = [
             Print(screen, FretboardDynamic(40, 31), 0, x=13, transparent=False),
-            Print(screen, Button(), 36, x=17, transparent=False),
-            Print(screen, Button(), 36, x=22, transparent=False),
-            Print(screen, Button(), 36, x=27, transparent=False),
-            Print(screen, Button(), 36, x=32, transparent=False),
-            Print(screen, Button(), 36, x=37, transparent=False),
+            ButtonEffect(
+                screen,
+                self._state.button_1,
+                key="a",
+                x=17,
+                y=36,
+                colour=Screen.COLOUR_GREEN,
+            ),
+            ButtonEffect(
+                screen,
+                self._state.button_2,
+                key="s",
+                x=22,
+                y=36,
+                colour=Screen.COLOUR_RED,
+            ),
+            ButtonEffect(
+                screen,
+                self._state.button_3,
+                key="d",
+                x=27,
+                y=36,
+                colour=Screen.COLOUR_YELLOW,
+            ),
+            ButtonEffect(
+                screen,
+                self._state.button_4,
+                key="f",
+                x=32,
+                y=36,
+                colour=Screen.COLOUR_BLUE,
+            ),
+            ButtonEffect(
+                screen,
+                self._state.button_5,
+                key="g",
+                x=37,
+                y=36,
+                colour=Screen.COLOUR_MAGENTA,
+            ),
             Print(screen, ScoreBoard(), 33, x=0),
             Print(screen, StarPower(), 32, x=46),
         ]
@@ -41,21 +78,6 @@ class GameController(Scene):
             c = event.key_code
             if c in (ord("x"), ord("X")):
                 raise StopApplication("User exit")
-            elif c in (ord("a"), ord("A")):
-                # TODO activate button one
-                pass
-            elif c in (ord("s"), ord("S")):
-                # TODO activate button two
-                pass
-            elif c in (ord("d"), ord("D")):
-                # TODO activate button three
-                pass
-            elif c in (ord("f"), ord("F")):
-                # TODO activate button four
-                pass
-            elif c in (ord("g"), ord("G")):
-                # TODO activate button five
-                pass
             elif c in (ord("h"), ord("H")):
                 self.add_effect(PopUpDialog(self._screen, HELP, ["OK"]))
             else:
