@@ -1,6 +1,7 @@
 from openal import *
 from mido import MidiFile
 
+
 class Song:
     def __init__(self, songPath):
         self.songPath = songPath
@@ -14,10 +15,10 @@ class Song:
         self.midi = MidiFile(f"{songPath}/notes.mid")
 
         self.time_signature = {
-            'numerator': 4,
-            'denominator': 4,
+            "numerator": 4,
+            "denominator": 4,
         }
-        self.tempo = 500000 # default to 120 bpm
+        self.tempo = 500000  # default to 120 bpm
         self.notes = []
 
         self.parse_midi()
@@ -34,15 +35,13 @@ class Song:
         for i, track in enumerate(self.midi.tracks):
             for msg in track:
                 if msg.is_meta and msg.time == 0:
-                    if msg.type == 'time_signature':
+                    if msg.type == "time_signature":
                         self.time_signature = {
-                            'numerator': msg.numerator,
-                            'denominator': msg.denominator,
+                            "numerator": msg.numerator,
+                            "denominator": msg.denominator,
                         }
-                    if msg.type == 'set_tempo':
+                    if msg.type == "set_tempo":
                         self.tempo = msg.tempo
 
-            if track.name == 'PART GUITAR':
+            if track.name == "PART GUITAR":
                 self.notes = track
-
-    
